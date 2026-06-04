@@ -323,7 +323,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 **Your Name**
 - GitHub: [@KIRAN KUMAR](https://github.com/Kiran20040329)
-- LinkedIn: [KIRAN KUMAR](https://linkedin.com/in/your-linkedin)
+- LinkedIn: [KIRAN KUMAR](https://www.linkedin.com/in/kiran-kumar-madam-93a837277/)
 
 ---
 
