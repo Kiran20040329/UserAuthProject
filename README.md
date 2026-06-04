@@ -177,9 +177,8 @@ login.html → LoginServlet
      ├── If found → create HttpSession → store name, username, userId
      │             Redirect → welcome.html ✅
      └── If not found → redirect → login.html with error ❌
-<img width="1366" height="729" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/e37996b6-9a28-4732-9cc0-510194d2c727" />
-
 ```
+<img width="1366" height="729" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/e37996b6-9a28-4732-9cc0-510194d2c727" />
 
 ### Forgot Password Flow
 ```
@@ -188,10 +187,8 @@ forgotpassword.html → ForgotPasswordServlet
      ├── SELECT FROM users WHERE username=? OR email=? OR mobile=?
      ├── If found → UPDATE users SET password=? WHERE username=?
      └── Redirect → login.html ✅
-<img width="1366" height="717" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/e1d4b4a7-cf4b-4d37-87da-ed21e1b6397b" />
-
-
 ```
+<img width="1366" height="717" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/576ef29c-ccdc-496f-9065-87340e8f1e8a" />
 
 ### Logout Flow
 ```
@@ -199,9 +196,8 @@ Logout button → LogoutServlet
      │
      ├── session.invalidate()   ← destroys all session attributes
      └── Redirect → login.html ✅
-<img width="1366" height="725" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/2dc21d4b-9576-4607-9262-eafb77588e74" />
-
 ```
+<img width="1366" height="725" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/2dc21d4b-9576-4607-9262-eafb77588e74" />
 
 ---
 
