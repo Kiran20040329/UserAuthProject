@@ -166,9 +166,8 @@ register.html → RegisterServlet
      ├── Check duplicate: username / email / mobile
      ├── If clean → INSERT INTO users (PreparedStatement)
      └── Redirect → login.html ✅
-<img width="1366" height="733" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/15454b73-c89b-479d-a8f1-8f617a9e07e9" />
-
 ```
+<img width="1366" height="733" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/2729438f-aad7-4e35-9d70-2641d2d38654" />
 
 ### Login Flow
 ```
