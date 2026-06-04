@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome — UserAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card welcome-card">
+
+    <!-- Avatar Icon -->
+    <div class="welcome-avatar">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+        </svg>
+    </div>
+
+    <!-- Welcome Heading — username will be injected by WelcomeServlet or JS -->
+    <h1 id="welcomeHeading">Welcome! 👋</h1>
+    <p class="subtitle" id="welcomeSub">You have successfully logged in.</p>
+
+    <!--
+        ⚠️ IMPORTANT FOR BEGINNERS:
+        Since this is a static HTML file, the session username cannot be
+        directly injected here without JSP/Server-Side rendering.
+
+        TWO OPTIONS to show the username:
+        OPTION A (Simple): Create WelcomeServlet.java that writes the HTML.
+        OPTION B (Used here): Store username in a hidden element via a
+                              redirect with URL param from LoginServlet.
+
+        We use Option B below (read from URL param for demo).
+        In production, use WelcomeServlet (Option A) — see notes in web.xml.
+    -->
+
+    <!-- Session Info Box -->
+    <div class="session-info">
+        <div>👤 <strong>Name:</strong> <span id="dispName">—</span></div>
+        <div>🔑 <strong>Username:</strong> <span id="dispUsername">—</span></div>
+        <div>🔒 <strong>Session:</strong> Active</div>
+        <div>⏱️ <strong>Session Expires:</strong> 30 minutes of inactivity</div>
+    </div>
+
+    <!-- Logout Button — points to LogoutServlet -->
+    <a href="LogoutServlet">
+        <button class="btn btn-danger">🚪 Logout</button>
+    </a>
+
+</div>
+
+<!--
+    This script reads URL parameters passed from LoginServlet via redirect.
+    LoginServlet should redirect to:
+    welcome.html?name=Alice+Johnson&username=alice
+-->
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const name     = params.get('name')     || 'User';
+    const username = params.get('username') || '';
+
+    document.getElementById('welcomeHeading').textContent = `Welcome, ${name}! 👋`;
+    document.getElementById('dispName').textContent     = name;
+    document.getElementById('dispUsername').textContent = username;
+</script>
+
+<!--
+    ============================================================
+    HOW TO PASS DATA TO WELCOME PAGE FROM LoginServlet:
+    ============================================================
+    In LoginServlet.java, change the redirect to:
+
+    String redirectURL = "welcome.html?name="
+        + java.net.URLEncoder.encode(fullName, "UTF-8")
+        + "&username="
+        + java.net.URLEncoder.encode(uname, "UTF-8");
+    response.sendRedirect(redirectURL);
+
+    This passes the session user info to welcome.html via URL.
+    ============================================================
+-->
+
+</body>
+</html>

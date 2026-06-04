@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — UserAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+
+    <!-- Brand Header -->
+    <div class="brand">
+        <div class="brand-icon">
+            <!-- Lock icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zm-6 9a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm3.1-9H8.9V6a3.1 3.1 0 0 1 6.2 0v2z"/>
+            </svg>
+        </div>
+        <h1>Welcome Back</h1>
+        <p>Sign in to your account</p>
+    </div>
+
+    <!-- Alert Messages -->
+    <div id="alertBox"></div>
+
+    <!-- Login Form -->
+    <form action="LoginServlet" method="post">
+
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   placeholder="Enter your username" required>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="Enter your password" required>
+        </div>
+
+        <!-- Forgot Password Link -->
+        <div style="text-align:right; margin-bottom:18px; font-size:0.85rem;">
+            <a href="forgotpassword.html" style="color:#2563eb; text-decoration:none;">
+                Forgot password?
+            </a>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn">Login</button>
+
+    </form>
+
+    <hr class="divider">
+
+    <div class="form-footer">
+        Don't have an account? <a href="register.html">Register here</a>
+    </div>
+
+</div>
+
+<!-- Show URL-based messages -->
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const alertBox = document.getElementById('alertBox');
+
+    if (params.get('error')) {
+        alertBox.innerHTML = `<div class="alert alert-error">⚠️ ${decodeURIComponent(params.get('error'))}</div>`;
+    }
+    if (params.get('msg')) {
+        alertBox.innerHTML = `<div class="alert alert-success">✅ ${decodeURIComponent(params.get('msg'))}</div>`;
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    ============================================================
+    FILE: web.xml
+    LOCATION: WebContent/WEB-INF/web.xml
+    PURPOSE: Deployment Descriptor.
+             Tells the Tomcat server:
+             - Which file to load first (welcome file)
+             - URL-to-Servlet mappings (when using old-style mapping
+               instead of @WebServlet annotation)
+
+    NOTE: In this project we use @WebServlet annotations directly
+          in each servlet class, so servlet-mapping tags here are
+          OPTIONAL. But this file is still required for welcome-file.
+    ============================================================
+-->
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <!--
+        APP DISPLAY NAME — shown in Tomcat Manager
+    -->
+    <display-name>UserAuthProject</display-name>
+
+    <!--
+        WELCOME FILE LIST
+        When user visits: http://localhost:8080/UserAuthProject/
+        Tomcat will serve login.html as the default page.
+    -->
+    <welcome-file-list>
+        <welcome-file>login.html</welcome-file>
+    </welcome-file-list>
+
+
+    <!--
+        ============================================================
+        OPTIONAL SERVLET MAPPINGS
+        (Only needed if you remove @WebServlet annotations)
+        These are already handled by @WebServlet in each Java class.
+        Keeping here for reference / if annotation scanning is off.
+        ============================================================
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.userauth.servlet.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.userauth.servlet.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <servlet-class>com.userauth.servlet.ForgotPasswordServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ForgotPasswordServlet</servlet-name>
+        <url-pattern>/ForgotPasswordServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.userauth.servlet.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/LogoutServlet</url-pattern>
+    </servlet-mapping>
+
+    -->
+
+</web-app>

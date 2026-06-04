@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register — UserAuth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+
+    <!-- Brand Header -->
+    <div class="brand">
+        <div class="brand-icon">
+            <!-- Person + Plus icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8zm9.6-4.8h-2.4V7.2h-2.4V9.6H14.4V12h2.4v2.4h2.4V12h2.4V9.6z"/>
+            </svg>
+        </div>
+        <h1>Create Account</h1>
+        <p>Join us — it only takes a minute</p>
+    </div>
+
+    <!-- Error / Success Message (shown via URL query parameter) -->
+    <div id="alertBox"></div>
+
+    <!-- Registration Form -->
+    <!-- action="RegisterServlet" must match @WebServlet in RegisterServlet.java -->
+    <form action="RegisterServlet" method="post" onsubmit="return validateForm()">
+
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="e.g. Alice Johnson" required maxlength="100">
+        </div>
+
+        <!-- Username -->
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   placeholder="e.g. alice99" required maxlength="50">
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="Minimum 6 characters" required minlength="6">
+        </div>
+
+        <!-- Mobile -->
+        <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel" id="mobile" name="mobile"
+                   placeholder="10-digit number" required
+                   pattern="\d{10}" maxlength="10">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="alice@example.com" required maxlength="100">
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Others"> Others</label>
+            </div>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn">Create Account</button>
+
+    </form>
+
+    <hr class="divider">
+
+    <!-- Navigation Links -->
+    <div class="form-footer">
+        Already have an account? <a href="login.html">Login here</a>
+    </div>
+
+</div>
+
+<!-- Script: Read URL query param and show alert -->
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const alertBox = document.getElementById('alertBox');
+
+    if (params.get('error')) {
+        alertBox.innerHTML = `<div class="alert alert-error">⚠️ ${decodeURIComponent(params.get('error'))}</div>`;
+    }
+    if (params.get('msg')) {
+        alertBox.innerHTML = `<div class="alert alert-success">✅ ${decodeURIComponent(params.get('msg'))}</div>`;
+    }
+
+    // Client-side validation (extra safety layer before form is submitted)
+    function validateForm() {
+        const mobile = document.getElementById('mobile').value;
+        if (!/^\d{10}$/.test(mobile)) {
+            alert('Mobile number must be exactly 10 digits.');
+            return false;
+        }
+        return true;
+    }
+</script>
+
+</body>
+</html>
