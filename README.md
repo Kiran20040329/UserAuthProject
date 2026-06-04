@@ -166,6 +166,8 @@ register.html → RegisterServlet
      ├── Check duplicate: username / email / mobile
      ├── If clean → INSERT INTO users (PreparedStatement)
      └── Redirect → login.html ✅
+<img width="1366" height="733" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/15454b73-c89b-479d-a8f1-8f617a9e07e9" />
+
 ```
 
 ### Login Flow
@@ -176,6 +178,8 @@ login.html → LoginServlet
      ├── If found → create HttpSession → store name, username, userId
      │             Redirect → welcome.html ✅
      └── If not found → redirect → login.html with error ❌
+<img width="1366" height="729" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/e37996b6-9a28-4732-9cc0-510194d2c727" />
+
 ```
 
 ### Forgot Password Flow
@@ -185,6 +189,9 @@ forgotpassword.html → ForgotPasswordServlet
      ├── SELECT FROM users WHERE username=? OR email=? OR mobile=?
      ├── If found → UPDATE users SET password=? WHERE username=?
      └── Redirect → login.html ✅
+<img width="1366" height="717" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/e1d4b4a7-cf4b-4d37-87da-ed21e1b6397b" />
+
+
 ```
 
 ### Logout Flow
@@ -193,6 +200,8 @@ Logout button → LogoutServlet
      │
      ├── session.invalidate()   ← destroys all session attributes
      └── Redirect → login.html ✅
+<img width="1366" height="725" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/2dc21d4b-9576-4607-9262-eafb77588e74" />
+
 ```
 
 ---
@@ -318,8 +327,8 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 ## 🙋‍♂️ Author
 
 **Your Name**
-- GitHub: [@your-username](https://github.com/your-username)
-- LinkedIn: [your-linkedin](https://linkedin.com/in/your-linkedin)
+- GitHub: [@KIRAN KUMAR](https://github.com/Kiran20040329)
+- LinkedIn: [KIRAN KUMAR](https://linkedin.com/in/your-linkedin)
 
 ---
 
